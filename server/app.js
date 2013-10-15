@@ -1,14 +1,8 @@
-
-/**
- * Module dependencies.
- */
-
 var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
+var garage = require('./routes/garage');
 var http = require('http');
 var path = require('path');
-
 var app = express();
 
 // all environments
@@ -24,12 +18,27 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+    app.use(express.errorHandler());
 }
 
+// home
 app.get('/', routes.index);
-app.get('/users', user.list);
+
+// get all activities
+app.get('/garage', garage.readAll);
+
+// get activity by id
+app.get('/garage/:garageID', garage.read);
+
+// create activity
+app.put('/garage', garage.create);
+
+// update activity by id
+app.post('/garage/:garageID', garage.update);
+
+// delete activity by id
+app.delete('/garage/:garageID', garage.delete);
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+    console.log('Express server listening on port ' + app.get('port'));
 });
