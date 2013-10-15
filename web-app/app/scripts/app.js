@@ -1,13 +1,17 @@
 'use strict';
 
-angular.module('denemeBowerApp', [])
-  .config(function ($routeProvider) {
+var app = angular.module('openGarageApp', []).config(function ($routeProvider) {
+
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+        .when('/', {
+            templateUrl: 'views/main.html',
+            controller: 'MainCtrl'
+        })
+        .when('/map', {
+            templateUrl: 'views/map.html',
+            controller: 'MapCtrl'
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
+});
