@@ -3,14 +3,15 @@ var Connection = require('mongodb').Connection;
 var Server = require('mongodb').Server;
 var BSON = require('mongodb').BSON;
 var ObjectID = require('mongodb').ObjectID;
+var dbConfig = require('../config.js').dbConfig;
 
-GarageProvider = function(config) {
-    this.db= new Db('garage', new Server(config.host, config.port, {auto_reconnect: true}, {}), {safe: true});
+GarageProvider = function() {
+    this.db= new Db(dbConfig.dbName, new Server(dbConfig.host, dbConfig.port, {auto_reconnect: true}, {}), {safe: true});
     this.db.open(function(){});
 };
 
 GarageProvider.prototype.getCollection = function(callback) {
-    this.db.collection('garages', function(error, garage_collection) {
+    this.db.collection(dbConfig.dbName, function(error, garage_collection) {
         if( error ) callback(error);
         else callback(null, garage_collection);
     });
