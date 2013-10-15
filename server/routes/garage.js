@@ -1,7 +1,6 @@
-var config = require('../config.js');;
 var garageModel = require('../models/garage.js');
 var GarageProvider = require('../providers/garageProvider').Garage;
-var garageProvider = new GarageProvider(config.dbConfig);
+var garageProvider = new GarageProvider();
 
 /*
  * Garage CRUD operations
