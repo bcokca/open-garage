@@ -1,4 +1,7 @@
+// res.send(new resultModel.result(false, null, 'Password must be at least 8 characters'));
+
 var garageModel = require('../models/garage.js');
+var resultModel = require('../models/result.js');
 var GarageProvider = require('../providers/garageProvider').Garage;
 var garageProvider = new GarageProvider();
 
@@ -19,10 +22,7 @@ exports.read = function(req, res){
 // return all activity
 exports.readAll = function(req, res){
     garageProvider.findAll(function(error, garages){
-        if(garages.length == 0)
-            res.send({});
-        else
-            res.send(garages);
+        res.send(new resultModel.result(true, garages));
     });
 };
 
