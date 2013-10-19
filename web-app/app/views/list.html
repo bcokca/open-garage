@@ -1,0 +1,49 @@
+
+<div class="main" ng-controller="ListCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-xs-12">
+                <div class="widget stacked">
+                    <div class="widget-header">
+                        <i class="icon-file"></i>
+                        <h3>Nearest Garage Sales</h3>
+                    </div> <!-- /widget-header -->
+                    <div class="widget-content">
+                        <div class="widget stacked widget-table action-table">
+                            <div class="widget-content">
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th class="td-actions">Detail</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="garage in garages">
+                                        <td>{{garage.description}}</td>
+                                        <td>{{garage.start_date}}</td>
+                                        <td>{{garage.end_date}}</td>
+                                        <td class="td-actions">
+                                            <a href="javascript:;" class="btn btn-xs btn-primary">
+                                                <i class="btn-icon-only icon-zoom-in"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                        </div> <!-- /widget -->
+                    </div> <!-- /widget-content -->
+                </div> <!-- /widget -->
+            </div> <!-- /span6 -->
+        </div> <!-- /span6 -->
+    </div> <!-- /row -->
+</div> <!-- /container -->
+</div> <!-- /main -->
+
+
+
+
+
+
