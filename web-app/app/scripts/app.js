@@ -1,7 +1,6 @@
 'use strict';
 
-var app = angular.module('openGarageApp', [])
-    .config(function ($routeProvider) {
+var app = angular.module('openGarageApp', ['apiServices']).config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'views/main.html',
@@ -11,19 +10,25 @@ var app = angular.module('openGarageApp', [])
             templateUrl: 'views/map.html',
             controller: 'MapCtrl'
         })
-        .when('/listGarages', {
-            templateUrl: 'views/listView.html',
+        .when('/list', {
+            templateUrl: 'views/list.html',
             controller: 'ListCtrl'
         })
-        .when('/mapGarages', {
-            templateUrl: 'views/mapView.html',
-            controller: 'MapCtrl'
+        .when('/new', {
+            templateUrl: 'views/new.html',
+            controller: 'NewCtrl'
         })
-        .when('/newGarageSale', {
-            templateUrl: 'views/newGarageView.html',
-            controller: 'NewGarageCtrl'
+        .when('/about', {
+            templateUrl: 'views/about.html',
+            controller: 'AboutCtrl'
         })
         .otherwise({
             redirectTo: '/'
         });
 });
+
+app.run(['$rootScope', '$cookies', '$http', '$window', function($rootScope, $cookies, $http, $window) {
+
+    // decide environment
+
+}]);
