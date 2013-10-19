@@ -1,50 +1,52 @@
-<nav class="navbar navbar-inverse" role="navigation">
+<div data-ng-controller="HeaderCtrl">
+    <nav class="navbar navbar-inverse" role="navigation">
 
-    <div class="navbar-header">
-        <a class="navbar-brand" href="./index.html">Open Garage Sale</a>
-    </div>
-</nav>
-<div class="subnavbar">
-    <div class="subnavbar-inner">
-        <div class="container">
-            <a href="javascript:" class="subnav-toggle" data-toggle="collapse" data-target=".subnav-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <i class="icon-reorder"></i>
-            </a>
-            <div class="collapse subnav-collapse">
-                <ul class="mainnav">
-                    <li>
-                        <a href="./index.html">
-                            <i class="icon-home"></i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/listGarages" >
-                            <i class="icon-th"></i>
-                            <span>List View</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/mapGarages" >
-                            <i class="icon-map-marker"></i>
-                            <span>Map View</span>
-                        </a>
-                    </li>
-                    <li  class="active">
-                        <a href="#/newGarageSale" >
-                            <i class="icon-plus-sign"></i>
-                            <span>Publish</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" >
-                            <i class="icon-flag-alt"></i>
-                            <span>About</span>
-                        </a>
-                    </li>
-                </ul>
-            </div> <!-- /.subnav-collapse -->
-        </div> <!-- /container -->
-    </div> <!-- /subnavbar-inner -->
-</div> <!-- /subnavbar -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="./index.html">Open Garage Sale</a>
+        </div>
+    </nav>
+    <div class="subnavbar">
+        <div class="subnavbar-inner">
+            <div class="container">
+                <a href="javascript:" class="subnav-toggle" data-toggle="collapse" data-target=".subnav-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="icon-reorder"></i>
+                </a>
+                <div class="collapse subnav-collapse">
+                    <ul class="mainnav">
+                        <li ng-class="{active: ($location.path() == '/') }">
+                            <a href="#">
+                                <i class="icon-home"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li ng-class="{active: ($location.path() == '/list') }">
+                            <a href="#/list" >
+                                <i class="icon-th"></i>
+                                <span>List View</span>
+                            </a>
+                        </li>
+                        <li ng-class="{active: ($location.path() == '/map') }">
+                            <a href="#/map" >
+                                <i class="icon-map-marker"></i>
+                                <span>Map View</span>
+                            </a>
+                        </li>
+                        <li ng-class="{active: ($location.path() == '/new') }">
+                            <a href="#/new" >
+                                <i class="icon-plus-sign"></i>
+                                <span>Publish</span>
+                            </a>
+                        </li>
+                        <li ng-class="{active: ($location.path() == '/about') }">
+                            <a href="#/about" >
+                                <i class="icon-flag-alt"></i>
+                                <span>About</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div> <!-- /.subnav-collapse -->
+            </div> <!-- /container -->
+        </div> <!-- /subnavbar-inner -->
+    </div> <!-- /subnavbar -->
+</div>
