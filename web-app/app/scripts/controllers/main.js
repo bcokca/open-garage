@@ -10,10 +10,10 @@ angular.module('openGarageApp')
   })
   .controller('ListCtrl', function($scope, $http){
         //call server and get all garages
-       /** $http.get('http://localhost:3000/garage').
+        $http.get('http://localhost:3000/garage').
             success(function(data, status, headers, config) {
-                $scope.garage_name = data;
-            }); **/
+                $scope.garages = data;
+            });
     })
     .controller('MapCtrl', function($scope){
         //Load in a contact from the route (/contact/:index)
