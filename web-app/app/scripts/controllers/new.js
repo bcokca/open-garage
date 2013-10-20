@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('NewCtrl', function ($scope, $http, garageService) {
+app.controller('NewCtrl', function ($scope, $http, garageService,$location) {
     $scope.garage = {};
 
     $scope.addGarage = function () {
@@ -9,11 +9,13 @@ app.controller('NewCtrl', function ($scope, $http, garageService) {
 
         new resource($scope.garage).$save(function(response){
             if(response.status){
-                $scope.garages = response.result;
-                //$location.path('/');
+                alert('New Garage Created');
+                $location.path('/detail/' + response.result[0]._id);
             }
             else {
-                console.log(response);
+
+                console.log(response.error);
+
             }
         });
     };
