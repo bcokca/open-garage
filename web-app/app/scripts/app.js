@@ -1,5 +1,7 @@
 'use strict';
 
+var ENV = {};
+
 var app = angular.module('openGarageApp', ['apiServices']).config(function ($routeProvider) {
     $routeProvider
         .when('/', {
@@ -27,8 +29,19 @@ var app = angular.module('openGarageApp', ['apiServices']).config(function ($rou
         });
 });
 
-app.run(['$rootScope', '$cookies', '$http', '$window', function($rootScope, $cookies, $http, $window) {
+app.run(['$rootScope',  '$http', '$window', function($rootScope, $http, $window) {
 
-    // decide environment
+    var appUrl = $window.location.origin;
 
+    switch(appUrl){
+        case 'http://localhost:9000':
+            ENV.type = 'local';
+            ENV.APIUrl = 'http://localhost';
+            ENV.port = 3000;
+            break;
+
+        default:
+            ENV.type = 'server';
+            ENV.APIUrl ='http://appfog.com';
+    }
 }]);
