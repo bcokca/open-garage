@@ -43,7 +43,7 @@ exports.update = function(req, res){
             req.body.start_date, req.body.end_date, req.body.latitude, req.body.longitude);
 
         garageProvider.update(req.params.id, garage, function(error, garage) {
-            res.send(garage);
+            res.send(new resultModel.result(true, garage));
         });
     }
 };
