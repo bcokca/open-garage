@@ -20,7 +20,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //avoid cross origin problem
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS');
     next();
 });
 
@@ -41,7 +42,7 @@ app.get('/garage', garage.readAll);
 app.get('/garage/:garageID', garage.read);
 
 // create activity
-app.put('/garage', garage.create);
+app.post('/garage', garage.create);
 
 // update activity by id
 app.post('/garage/:garageID', garage.update);
