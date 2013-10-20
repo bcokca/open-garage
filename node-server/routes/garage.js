@@ -11,11 +11,8 @@ var garageProvider = new GarageProvider();
 
 // return garage by id
 exports.read = function(req, res){
-    garageProvider.findById(req.params.garageID, function(error, garage){
-        if(!garage || garage.length == 0)
-            res.send({});
-        else
-            res.send(garage);
+    garageProvider.findById(req.params.id, function(error, garage){
+        res.send(new resultModel.result(true, garage));
     });
 };
 
@@ -45,7 +42,7 @@ exports.update = function(req, res){
         var garage = new garageModel.Garage(req.body.description,
             req.body.start_date, req.body.end_date, req.body.latitude, req.body.longitude);
 
-        garageProvider.update(req.params.garageID, garage, function(error, garage) {
+        garageProvider.update(req.params.id, garage, function(error, garage) {
             res.send(garage);
         });
     }
@@ -53,7 +50,7 @@ exports.update = function(req, res){
 
 // delete activity
 exports.delete = function(req, res){
-    garageProvider.delete(req.params.garageID, function(error, garage) {
+    garageProvider.delete(req.params.id, function(error, garage) {
         res.send({status: true});
     });
 };
