@@ -2,12 +2,12 @@
 
 app.controller('ListCtrl', function ($scope, $http, garageService) {
 
+    $scope.garages = [];
+
     garageService.garage().get(function(response){
         if(response.status){
-            // success
-            console.log(response);
+            $scope.garages = response.result;
         }
-
         else {
             console.log(response);
         }
