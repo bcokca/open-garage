@@ -20,6 +20,10 @@ var app = angular.module('openGarageApp', ['apiServices']).config(function ($rou
             templateUrl: 'views/new.html',
             controller: 'NewCtrl'
         })
+        .when('/new/:id', {
+            templateUrl: 'views/new.html',
+            controller: 'NewCtrl'
+        })
         .when('/about', {
             templateUrl: 'views/about.html',
             controller: 'AboutCtrl'
