@@ -29,7 +29,7 @@ exports.create = function(req, res){
         req.body.start_date, req.body.end_date, req.body.latitude,  req.body.longitude);
 
     garageProvider.save(newGarage, function(error, garage) {
-        res.send(newGarage);
+        res.send(new resultModel.result(true, garage));
     });
 };
 
