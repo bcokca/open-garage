@@ -39,16 +39,16 @@ app.get('/', routes.index);
 app.get('/garage', garage.readAll);
 
 // get activity by id
-app.get('/garage/:garageID', garage.read);
+app.get('/garage/:id', garage.read);
 
 // create activity
 app.post('/garage', garage.create);
 
 // update activity by id
-app.post('/garage/:garageID', garage.update);
+app.post('/garage/:id', garage.update);
 
 // delete activity by id
-app.delete('/garage/:garageID', garage.delete);
+app.delete('/garage/:id', garage.delete);
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
