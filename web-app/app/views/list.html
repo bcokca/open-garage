@@ -17,6 +17,7 @@
                                         <th>Start Date</th>
                                         <th>End Date</th>
                                         <th class="td-actions">Detail</th>
+                                        <th class="td-actions">Edit</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -26,6 +27,11 @@
                                         <td>{{garage.end_date}}</td>
                                         <td class="td-actions">
                                             <a href="#/detail/{{garage._id}}" class="btn btn-xs btn-primary">
+                                                <i class="btn-icon-only icon-zoom-in"></i>
+                                            </a>
+                                        </td>
+                                        <td class="td-actions">
+                                            <a href="#/new/{{garage._id}}" class="btn btn-xs btn-primary">
                                                 <i class="btn-icon-only icon-zoom-in"></i>
                                             </a>
                                         </td>
