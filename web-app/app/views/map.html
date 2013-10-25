@@ -8,7 +8,18 @@
                         <h3>Nearest Garage Sales</h3>
                     </div> <!-- /widget-header -->
                     <div class="widget-content">
-                        <div id="map-canvas"></div>
+                        <div class="google-map"
+                             center="position.coords"
+                             zoom="zoomProperty"
+                             markers="markersProperty"
+                             latitude="clickedLatitudeProperty"
+                             longitude="clickedLongitudeProperty"
+                             mark-click="true"
+                             draggable="true"
+                             fit="false"
+                             events="eventsProperty"
+                             style="height: 1000px; width: 100%">
+                        </div>
                     </div> <!-- /widget-content -->
                 </div> <!-- /widget -->
             </div> <!-- /span6 -->

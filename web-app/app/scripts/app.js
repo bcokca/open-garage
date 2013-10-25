@@ -2,7 +2,7 @@
 
 var ENV = {};
 
-var app = angular.module('openGarageApp', ['apiServices']).config(function ($routeProvider) {
+var app = angular.module('openGarageApp', ['apiServices','google-maps']).config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'views/main.html',
