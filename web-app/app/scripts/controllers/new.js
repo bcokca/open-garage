@@ -1,11 +1,10 @@
 'use strict';
 
-app.controller('NewCtrl', function ($scope, $http, garageService,$location,$routeParams) {
+app.controller('NewCtrl', function ($scope, $http, garageService,$location,$routeParams, geolocation) {
 
     $scope.garage = {};
 
     //parameters for address autocomplete directive
-    $scope.result = '';
     $scope.options = null;
     $scope.details = '';
 
@@ -39,15 +38,31 @@ app.controller('NewCtrl', function ($scope, $http, garageService,$location,$rout
                 }
             });
         }else{
-            new resource($scope.garage).$save(function(response){
-                if(response.status){
-                    alert('New Garage Created');
-                    $location.path('/detail/' + response.result[0]._id);
-                }
-                else {
-                    console.log(response.error);
+
+
+            var geocoder =  new google.maps.Geocoder();
+
+            geocoder.geocode( { 'address':$scope.garage.address}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    $scope.garage.longitude = results[0].geometry.location.lng();
+                    $scope.garage.latitude = results[0].geometry.location.lat();
+
+                    new resource($scope.garage).$save(function(response){
+                        if(response.status){
+                            alert('New Garage Created');
+                            $location.path('/detail/' + response.result[0]._id);
+                        }
+                        else {
+                            console.log(response.error);
+                        }
+                    });
+
+                } else {
+                    alert("Something got wrong " + status);
                 }
             });
+
+
         }
     };
 
