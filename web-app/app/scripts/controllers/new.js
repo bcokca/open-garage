@@ -4,6 +4,11 @@ app.controller('NewCtrl', function ($scope, $http, garageService,$location,$rout
 
     $scope.garage = {};
 
+    //parameters for address autocomplete directive
+    $scope.result = '';
+    $scope.options = null;
+    $scope.details = '';
+
 
     $scope.editMode=false;
 
