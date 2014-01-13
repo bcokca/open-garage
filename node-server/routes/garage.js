@@ -26,7 +26,7 @@ exports.readAll = function(req, res){
 // create a garage
 exports.create = function(req, res){
     var newGarage = new garageModel.Garage(req.body.description,
-        req.body.start_date, req.body.end_date, req.body.latitude,  req.body.longitude);
+        req.body.start_date, req.body.end_date, req.body.latitude,  req.body.longitude, req.body.address);
 
     garageProvider.save(newGarage, function(error, garage) {
         res.send(new resultModel.result(true, garage));
@@ -36,11 +36,11 @@ exports.create = function(req, res){
 // update garage
 exports.update = function(req, res){
 
-    if(!req.body.start_date || !req.body.description || !req.body.end_date || !req.body.latitude || !req.body.longitude)
+    if(!req.body.start_date || !req.body.description || !req.body.end_date || !req.body.latitude || !req.body.longitude || !req.body.address)
         res.send({status: false});
     else {
         var garage = new garageModel.Garage(req.body.description,
-            req.body.start_date, req.body.end_date, req.body.latitude, req.body.longitude);
+            req.body.start_date, req.body.end_date, req.body.latitude, req.body.longitude, req.body.address);
 
         garageProvider.update(req.params.id, garage, function(error, garage) {
             res.send(new resultModel.result(true, garage));
