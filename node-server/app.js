@@ -4,17 +4,27 @@ var garage = require('./routes/garage');
 var http = require('http');
 var path = require('path');
 var app = express();
+var jwt = require('express-jwt');
+var cors = require('cors');
+
 
 // all environments
 app.set('port', process.env.PORT || 3001);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+
+app.use(cors());
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+
+const authCheck = jwt({
+    secret: new Buffer('zlcBl1xSOr6l86xD-dsUflyrC8k_hO44fKqDvphjuO68E4iDHMb6w9mqpktJ-iVH', 'base64'),
+    audience: 'E9V3eNScjL3OWtvGA8eMrEF179KOOAOc'
+});
 
 
 //avoid cross origin problem
@@ -35,20 +45,20 @@ if ('development' == app.get('env')) {
 // home
 app.get('/', routes.index);
 
-// get all activities
+// get all garages -- public api
 app.get('/garage', garage.readAll);
 
 // get activity by id
 app.get('/garage/:id', garage.read);
 
 // create activity
-app.post('/garage', garage.create);
+app.post('/garage', authCheck, garage.create);
 
 // update activity by id
-app.post('/garage/:id', garage.update);
+app.post('/garage/:id', authCheck, garage.update);
 
 // delete activity by id
-app.delete('/garage/:id', garage.delete);
+app.delete('/garage/:id', authCheck, garage.delete);
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
